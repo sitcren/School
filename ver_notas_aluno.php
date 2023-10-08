@@ -16,43 +16,47 @@ try {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver notas</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ver notas</title>
+    </head>
 
-<body>
+    <body>
 
-</body>
+    </body>
 
-</html>
+    </html>
 
 <?php
 
     // Exibição dos resultados em uma tabela
     echo "<table border='1'>
-    <tr>
-        <th>Disciplina</th>
-        <th>Nota 1</th>
-        <th>Nota 2</th>
-        <th>Nota 3</th>
-    </tr>";
+        <tr>
+            <th>Disciplina</th>
+            <th>Nota 1</th>
+            <th>Nota 2</th>
+            <th>Nota 3</th>
+            <th>Média</th>
+        </tr>";
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // Calcular a média
+        $media = ($row['nota1'] + $row['nota2'] + $row['nota3']) / 3;
+
         echo "<tr>
-        <td>{$row['disciplina']}</td>
-        <td>{$row['nota1']}</td>
-        <td>{$row['nota2']}</td>
-        <td>{$row['nota3']}</td>
-    </tr>";
+            <td>{$row['disciplina']}</td>
+            <td>{$row['nota1']}</td>
+            <td>{$row['nota2']}</td>
+            <td>{$row['nota3']}</td>
+            <td>{$media}</td>
+          </tr>";
     }
 
-    echo "
-</table>";
+    echo "</table>";
 } catch (\PDOException $e) {
     // Em caso de erro na consulta
     echo "Erro: " . $e->getMessage();
