@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['aluno_id'] = $aluno['id'];
 
             // Redirecionar para a página de notas ou qualquer outra página desejada
-            header('Location: cadastroNotas.php');
+            header('Location: ver_notas_aluno.php');
             exit();
         } else {
             // Credenciais inválidas
