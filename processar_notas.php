@@ -4,13 +4,11 @@ include 'conexao.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Dados recebidos do formulário
+    $aluno_id = $_POST['aluno_id'];
     $disciplina = $_POST['disciplina'];
     $nota1 = $_POST['nota1'];
     $nota2 = $_POST['nota2'];
     $nota3 = $_POST['nota3'];
-
-    // Suponha que você tenha o ID do aluno disponível (substitua com o método real de obtenção do ID)
-    $aluno_id = $_SESSION['aluno_id'];
 
     try {
         // Preparação da declaração SQL
@@ -25,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':nota3', $nota3);
         $stmt->execute();
 
-        echo "Notas inseridas com sucesso!";
+        echo "Notas adicionadas com sucesso!";
     } catch (\PDOException $e) {
         // Em caso de erro na inserção
         echo "Erro: " . $e->getMessage();
